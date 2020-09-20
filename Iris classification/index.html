@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+  <style>
+
+    .container-1:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .column-1{
+      float: left;
+      width: 40%;
+      padding: 5px;
+    }
+
+    .container-1 input[type=text]{
+        width: 20%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .container-1 button[disabled]{
+        background-color: #cccccc;
+        color: #666666;
+    }
+
+    .container-1 label {
+      padding: 2px 12px 12px 0;
+      display: inline-block;
+      font-size: 20px;
+    }
+
+    .container-1 .button {
+      border: none;
+      color: white;
+      padding: 5px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      background-color: rgb(255,127,80);
+    }
+
+    .container-3 {
+      font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    .container-3 td{
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+    .container-3 th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      background-color: #4CAF50;
+      color: white;
+      text-align: left;
+    }
+    .container-3 tr:nth-child(even){
+      background-color: #f2f2f2;
+    }
+
+    .container-3 button{
+      border: none;
+      color: white;
+      font-size: 20px;
+      background-color: rgb(255,127,80);
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      padding: 5px 15px; 
+    }
+
+    #pprob, #pclass, #tclass{
+      width:12%;
+      font-size: 20px;
+    }
+
+    .container-3 input[type=text]{
+      font-size: 16px;
+      width:45%;
+    }
+
+    .container-2:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .column {
+      float: left;
+      width: 31%;
+      padding: 10px;
+    }
+
+  </style>
+
+  <title>Iris Dataset Classification</title>
+
+    
+    <!-- Import TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+    
+    <!-- Import tfjs-vis -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis@1.4.3/dist/tfjs-vis.umd.min.js"></script>
+    
+    <script src="script.js"></script>
+
+</head>
+
+<body>
+
+
+  <div class="container-1">
+    <div class="column-1">
+      <h2>Train Model</h2>
+      <label for="epochs">Train Epochs: </label>
+      <input type="text" id="epoch" name="epoch"><br>
+
+      <label for="lrate">Learning Rate: </label>
+      <input type="text" id="lrate" name="lrate"><br>
+      <button class="button" id = "btn1" >Train Model From Scratch</button> <br>
+  
+    
+      <h2>Save/Load Model</h2>
+      <button class="button" id="btn2">Load Hosted Model </button><br>
+      <button class="button" id="btn3" disabled>Save Model Locally</button>
+      <button class="button" id="btn4">Load Local Model </button>
+    </div>
+
+    <div class="column-1">
+        <h4>MODEL SUMMARY</h4>
+        <div id="summ-block"></div>
+    </div>
+
+  </div>
+
+  <div>
+    <h2>Status</h2>
+    <div id="status"></div>
+  </div>
+   
+  <h2>Training Progress</h2>
+  <div class ="container-2">
+
+    <div class="column">
+      <h4>LOSS</h4>
+      <div id="loss-block"></div>
+    </div>
+
+    <div class="column">
+      <h4>ACCURACY</h4>
+      <div id="acc-block" ></div>
+    </div>
+
+    <div class="column">
+      <h4>CONFUSION MATRIX</h4>
+      <div id="matrix-block"></div>
+    </div>
+    
+  </div>
+  
+  
+ 
+  <h2>Test Examples</h2>
+
+  <table class="container-3" id="myTable">
+
+    <tr>
+      <th>Petal Length</th>
+      <th>Petal Width</th>
+      <th>Sepal Length</th>
+      <th>Sepal Width</th>
+      <th>True Class</th>
+      <th>Predicted Class</th>
+      <th>Class Probabilities</th>
+    </tr>
+
+    <tr>
+
+      <td>
+        <input type="text" id="plength" value="5.1">
+        <button class="button" id ="pl1" >+</button>
+        <button class="button" id ="pl2" >-</button>
+      </td>
+
+      <td>
+        <input type="text" id="pwidth" value="3.5">
+        <button class="button" id = "pw1" >+</button>
+        <button class="button" id = "pw2" >-</button>
+      </td>
+
+      <td>
+        <input type="text" id="slength" value="1.4">
+        <button class="button" id = "sl1" >+</button>
+        <button class="button" id = "sl2" >-</button>
+      </td>
+
+      <td>
+        <input type="text" id="swidth" value="0.2">
+        <button class="button" id = "sw1" >+</button>
+        <button class="button" id = "sw2" >-</button>
+      </td>
+
+      <td id="tclass"></td>
+
+      <td id="pclass"></td>
+
+      <td id="pprob"></td>
+
+    </tr>
+
+  </table>
+
+</body>
+
+</html>
