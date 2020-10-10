@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+
+		<title>Hand Pose Detection</title>
+
+		<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core@2.4.0/dist/tf-core.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-converter@2.4.0/dist/tf-converter.min.js"></script>
+		<script src="https://unpkg.com/@tensorflow/tfjs-backend-webgl@2.1.0/dist/tf-backend-webgl.js"></script>
+		
+		<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/handpose@0.0.6/dist/handpose.min.js"></script>
+		
+		
+		<style>
+			#pose-canvas{
+				position: absolute;
+      			top: 0;
+      			left: 0;
+			}
+		</style>
+		
+
+	</head>
+
+	<body>
+
+		 <div id="video-container">
+			<canvas id="pose-canvas"></canvas>
+            <video id="pose-video" autoplay> </video>			
+		 </div>
+
+		 <script src="script.js"></script>
+	</body>
+
+</html>
